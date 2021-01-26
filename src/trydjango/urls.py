@@ -24,4 +24,5 @@ urlpatterns = [
   url(r'^', include('TeacherApp.urls')),
   # url(r'^mah_root/$', 'someapp.views.mah_view', name='mah_view')
 
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              # static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

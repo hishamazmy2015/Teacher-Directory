@@ -27,21 +27,17 @@ def filterTeacherByLastName(request):
   teachers = Teacher.Objects.filter(TeacherLName__startswith=query)
   return teachers
 
+def filterTeacherBySubject(request):
+  query = request.GET.get("q", '')
+  teachers = Teacher.Objects.filter(TeacherSubjectsTaught=query)
+  return teachers
 
 def homepage(request):
-  # username = request.POST.get('username', '')
-  # password = request.POST.get('password', '')
-  query = request.GET.get('q', '')
-  teach = Teacher.objects.filter(TeacherLName__startswith=query)
-  # teach = Teacher.objects.all()
-
-  TeacherList = teach
-
-  # if (teacher is not None):
-  #
-  #   con = teacher
-  # else:
-  # readCSVFile(request)
+  teach = Teacher.objects.all()
+  if not teach:
+    readCSVFile(request)
+  else:
+    TeacherList = teach
 
   return render(request, 'home.html', {'TeacherList': TeacherList})
 
@@ -49,35 +45,30 @@ def homepage(request):
 #
 
 def readCSVFile(request):
-  # upload_file = request.FILES['upload_file']
-  # data_read = upload_file.read()
-
   data = pd.read_csv("Teachers.csv")
   # data = pd.read_csv(data_read)
 
   for index, row in data.iterrows():
-    # print(index,
-    #       row['First Name'],
-    #       row['Last Name'],
-    #       row['Profile picture'],
-    #       row["Email Address"],
-    #       row["Phone Number"],
-    #       row["Room Number"],
-    #       row["Subjects taught"])
-
-    import PIL
+    print(index,
+          row['First Name'],
+          row['Last Name'],
+          row['Profile picture'],
+          row["Email Address"],
+          row["Phone Number"],
+          row["Room Number"],
+          row["Subjects taught"])
 
     folder = "teachers"
-    if row['Profile picture'] is None:
+    if not row['Profile picture']:
       response = requests.get("https://devnote.in/wp-content/uploads/2020/04/devnote.png")
       file = open("sample_image.png", "wb")
       file.write(response.content)
       print(response.content)
       row['Profile picture'] = response.content
-    for filename in os.listdir(folder):
-      if filename == row['Profile picture']:
-        print('filename ', filename)
-        default_storage.save(row['Profile picture'], ContentFile(filename))
+    else:
+      for filename in os.listdir(folder):
+        if filename == row['Profile picture']:
+          default_storage.save(row['Profile picture'], ContentFile(filename))
 
     teacher = Teacher(TeacherFName=row['First Name'],
                       TeacherLName=row['Last Name'],
@@ -88,16 +79,6 @@ def readCSVFile(request):
                       TeacherSubjectsTaught=row["Subjects taught"])
 
     teacher.save()
-
-
-# @csrf_exempt
-# def load_images_from_folder(folder):
-#   images = []
-#   for filename in os.listdir(folder):
-#     img = cv2.imread(os.path.join(folder, filename))
-#     if img is not None:
-#       images.append(img)
-#   return images
 
 
 def SaveFile(request):

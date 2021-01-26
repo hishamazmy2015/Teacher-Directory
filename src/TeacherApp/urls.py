@@ -7,6 +7,8 @@ from django.conf import settings
 urlpatterns = [
                 url(r'', views.homepage),
                 url(r'url_filter', views.filterTeacherByLastName),
+                url(r'url_filter_subject', views.filterTeacherBySubject),
+
 
   # url(r'', views.readCSVFile),
                 # url(r'^teacher/$', views.teacherApi),

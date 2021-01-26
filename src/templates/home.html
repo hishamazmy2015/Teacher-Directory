@@ -10,37 +10,12 @@
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
-  <!--  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
   <meta charset="utf-8">
 
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
-<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
-<script>
-                    console.log("Entered 111111111.....");
-
- $(document).ready(function(){
-                    console.log("Entered 22222222.....");
-});
-
-
-
-
-</script>
-
-{{ request.META.HTTP_HOST }}
-{{ request.META.HTTP_HOST }}
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary float-right m-2"
-        data-toggle="modal" data-target="#exampleModal"
-
-        data-backdrop="static" data-keyboard="false">
-  Add Teacher
-</button>
-
 <table class="table table-striped">
   <thead>
   <tr>
@@ -71,19 +46,16 @@
     </th>
     <th>
       <div class="d-flex flex-row">
-        <input [(ngModel)]="SubjectNameFilter" class="form-control"
-               (keyup)="FilterFn()" placeholder="Filter">
+        <input class="form-control" placeholder="Filter">
 
-        <button type="button" class="btn btn-light"
-                (click)="sortResult('SubjectName',true)">
+        <button type="button" class="btn btn-light">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill" fill="currentColor"
                xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
                   d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z"/>
           </svg>
         </button>
-        <button type="button" class="btn btn-light"
-                (click)="sortResult('SubjectName',false)">
+        <button type="button" class="btn btn-light">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor"
                xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
@@ -101,7 +73,6 @@
   </thead>
   <tbody>
 
-  
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -169,7 +140,6 @@
 
             $(document).ready(function(){
                 $('#filterByLastName').on('change', function(){
-                    console.log("Entered Done.....");
                     $("#tableResults tbody").html("");
                     $.ajax({
                         url: "url_filter",
@@ -199,23 +169,5 @@
                 });
             });
 
-
-
-
-
 </script>
-
-<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"-->
-<!--        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"-->
-<!--        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"-->
-<!--        crossorigin="anonymous"></script>-->
-
-<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"-->
-<!--        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"-->
-<!--        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"-->
-<!--        crossorigin="anonymous"></script>-->
 </html>

@@ -15,10 +15,8 @@ class Teacher(models.Model):
   TeacherPhone = models.CharField(max_length=100)
   TeacherRoomNo = models.CharField(max_length=100)
   TeacherSubjectsTaught = models.CharField(max_length=100)
-  PhotoFileName = models.ImageField(upload_to='images')
+  PhotoFileName = models.ImageField(upload_to='resources',default='21744.jpg')
   # image = models.ImageField(upload_to='images')
 
   def first_letter(self):
     return self.TeacherLName and self.TeacherLName[0] or ''
-
-
